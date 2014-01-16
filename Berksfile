@@ -9,5 +9,6 @@ cookbook 'database'
 cookbook 'openssl'
 cookbook 'users'
 cookbook 'composer'
+cookbook 'memcached'
 
 metadata
