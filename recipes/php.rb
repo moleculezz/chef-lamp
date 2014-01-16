@@ -25,6 +25,11 @@ php_pear "drush" do
   action :install
 end
 
+php_pear "zendopcache" do
+  version "7.0.2"
+  action :install
+end
+
 package "imagemagick"
 
 include_recipe "composer"
