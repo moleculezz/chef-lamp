@@ -37,7 +37,6 @@ mysql_database_user db["id"] do
   connection connection_info
   password db["password"]
   database_name db["id"]
-  host 'localhost'
   privileges [:select,:update,:insert,:delete,:create,:drop,:index,:alter]
   action :grant
 end
