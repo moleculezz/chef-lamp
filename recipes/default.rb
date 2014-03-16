@@ -7,6 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
+include_recipe "base"
+
 include_recipe "apt"
 include_recipe "build-essential"
 include_recipe "git"
