@@ -21,7 +21,7 @@ end
 
 php_pear "drush" do
   channel dr.channel_name
-  version "6.1.0.0"
+  version "6.2.0.0"
   action :install
 end
 
