@@ -1,0 +1,22 @@
+---
+driver:
+  name: vagrant
+  network:
+      - ["private_network", {ip: "10.11.11.101"}]
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-13.04
+  - name: debian-7.2.0
+
+suites:
+  - name: default
+    run_list:
+      - recipe[lamp::default]
+    attributes: {
+      lamp: { site_url: "localhost", site_aliases: {"localhost", "127.0.0.1"} },
+      authorization: { sudo: { users: ["vagrant", "test"]}},
+      openssh: { server: { client_alive_interval: "30", client_alive_count_max: "10"}}
+    }
