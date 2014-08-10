@@ -12,6 +12,12 @@
 include_recipe "database::mysql"
 include_recipe "mysql::server"
 
+node.default['mysql']['tunable']['max_allowed_packet'] = "128M"
+node.default['mysql']['tunable']['query_cache_limit'] = "2M"
+node.default['mysql']['tunable']['query_cache_size'] = "32M"
+node.default['mysql']['tunable']['thread_stack'] = "384K"
+node.default['mysql']['tunable']['thread_cache_size'] = "16"
+
 id = node['lamp']['appname']
 db = search(:db_users, "id:#{id}").first
 
