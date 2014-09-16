@@ -12,7 +12,7 @@ platforms:
   - name: debian-7.6
 
 suites:
-  - name: default
+  - name: lamp
     run_list:
       - recipe[lamp::default]
     attributes: {
