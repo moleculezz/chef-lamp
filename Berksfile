@@ -10,6 +10,7 @@ cookbook 'openssl'
 cookbook 'users'
 cookbook 'composer'
 cookbook 'memcached'
-cookbook 'base', git: 'https://github.com/moleculezz/chef-base.git'
+cookbook 'base', '~> 1.1.0', git: 'https://github.com/moleculezz/chef-base.git'
+cookbook 'secure', '~> 1.0.0', git: 'https://github.com/moleculezz/chef-secure.git'
 
 metadata
