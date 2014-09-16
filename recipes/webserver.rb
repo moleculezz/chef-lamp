@@ -9,29 +9,30 @@
 
 #node.default["apache"]["default_site_enabled"] = true
 
-directory "#{node['lamp']['approot']}/current" do
-  owner node['apache']['user']
-  group node['apache']['group']
+directory node.lamp.approot do
+  owner node.apache.user
+  group node.apache.group
   recursive true
   action :create
   notifies :run, "execute[chown-www-sites]", :immediately
 end
 
 execute "chown-www-sites" do
-  command "chown -R #{node[:apache][:user]}:#{node[:apache][:group]} #{node[:lamp][:sitesroot]}/.."
+  command "chown -R #{node.apache.user}:#{node.apache.group} #{node.lamp.sitesroot}/.."
   user "root"
   action :nothing
 end
 
-users_manage "www-data" do
-  group_id 33
+users_manage node.apache.user do
+  group_id node.etc.group[node.apache.group].gid
 end
 
-web_app node["lamp"]["appname"] do
-  server_name node["lamp"]["site_url"]
-  server_aliases node["lamp"]["site_aliases"]
+web_app node.lamp.appname do
+  cookbook "apache2"
+  server_name node.lamp.site_url
+  server_aliases node.lamp.site_aliases
   allow_override "All"
-  docroot "#{node[:lamp][:approot]}/current"
+  docroot node.lamp.approot
 end
 
 apache_module "expires"
