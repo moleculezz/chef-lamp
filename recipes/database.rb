@@ -8,26 +8,12 @@
 #
 
 ::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+node.set_unless['mysql']['server_root_password'] = secure_password
 
-include_recipe "database::mysql"
+::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+node.set_unless['mysql']['server_debian_password'] = secure_password
+
+::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+node.set_unless['mysql']['server_repl_password'] = secure_password
+
 include_recipe "mysql::server"
-
-node.default.mysql.tunable.max_allowed_packet = "128M"
-node.default.mysql.tunable.query_cache_limit = "2M"
-node.default.mysql.tunable.query_cache_size = "32M"
-node.default.mysql.tunable.thread_stack = "384K"
-node.default.mysql.tunable.thread_cache_size = "16"
-
-db = search(:db_users, "id:#{node.lamp.appname}").first
-
-if db.nil?
-  user = {
-    "id" => node.lamp.appname,
-    "password" => secure_password
-  }
-  databag_item = Chef::DataBagItem.new
-  databag_item.data_bag("db_users")
-  databag_item.raw_data = user
-  databag_item.save
-  db = user
-end
