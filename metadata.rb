@@ -4,7 +4,7 @@ maintainer_email 'gdarends@gmail.com'
 license          'All rights reserved'
 description      'Installs/Configures lamp'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.3.1'
+version          '0.3.2'
 
 supports "debian"
 supports "ubuntu"
@@ -15,10 +15,7 @@ depends "users"
 depends "apache2"
 depends "php"
 depends "composer"
-depends "memcached"
-depends "database"
+depends "mysql"
 depends "openssl"
 
-depends "apt"
-depends "build-essential"
 depends "git"
