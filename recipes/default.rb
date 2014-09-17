@@ -8,12 +8,7 @@
 #
 
 include_recipe "base"
+include_recipe "secure"
 
-include_recipe "apt"
-include_recipe "build-essential"
-include_recipe "git"
-
-include_recipe "lamp::users"
-include_recipe "lamp::webserver"
-include_recipe "lamp::php"
-include_recipe "lamp::database"
+#include_recipe "build-essential"
+#include_recipe "git"
