@@ -10,5 +10,4 @@
 include_recipe "base"
 include_recipe "secure"
 
-#include_recipe "build-essential"
-#include_recipe "git"
+include_recipe "git"
