@@ -31,17 +31,3 @@ if db.nil?
   databag_item.save
   db = user
 end
-
-connection_info = {:host => "localhost", :username => 'root', :password => node['mysql']['server_root_password']}
-mysql_database db["id"] do
-  connection connection_info
-  action :create
-end
-
-mysql_database_user db["id"] do
-  connection connection_info
-  password db["password"]
-  database_name db["id"]
-  privileges [:select,:update,:insert,:delete,:create,:drop,:index,:alter]
-  action :grant
-end
