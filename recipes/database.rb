@@ -7,13 +7,18 @@
 # All rights reserved - Do Not Redistribute
 #
 
-::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
-node.set_unless['mysql']['server_root_password'] = secure_password
+unless node.attribute?("mysql_is_installed")
+  ::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+  node.set['mysql']['server_root_password'] = secure_password
 
-::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
-node.set_unless['mysql']['server_debian_password'] = secure_password
+  ::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+  node.set['mysql']['server_debian_password'] = secure_password
 
-::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
-node.set_unless['mysql']['server_repl_password'] = secure_password
+  ::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+  node.set['mysql']['server_repl_password'] = secure_password
+end
 
 include_recipe "mysql::server"
+include_recipe "database::mysql"
+
+node.set_unless['mysql_is_installed'] = true
