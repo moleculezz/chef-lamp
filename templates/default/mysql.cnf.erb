@@ -6,30 +6,50 @@
 # and as it allows you to reclaim space when you drop or truncate a table.
 # Separate tablespace also benefits for Xtrabackup partial backup scheme.
 innodb_file_per_table
-innodb_buffer_pool_size     = 2G
-innodb_log_file_size        = 512M # 25% of buffer pool size
-;innodb_lock_wait_timeout    = 80
 
-;innodb_buffer_pool_size     = 4G
-;innodb_io_capacity          = 2000
-;innodb_thread_concurrency   = 0
-;innodb_read_io_threads      = 64
-;innodb_write_io_threads     = 64
+# InnoDB relies heavily on the buffer pool and should be set correctly,
+# so be sure to allocate enough memory to it.
+# Typically a good value is 70%-80% of available memory.
+# More precisely, if you have RAM bigger than your dataset setting it bit
+# larger should be appropriate with that keep in account of your database growth
+# and re-adjust innodb buffer pool size accordingly.
+innodb_buffer_pool_size = <%= @innodb_buffer_pool_size %>
+
+# Read this article on how to calculate innodb_log_file_size
+# http://www.percona.com/blog/2008/11/21/how-to-calculate-a-good-innodb-log-file-size/
+innodb_log_file_size = <%= @innodb_log_file_size %>
+
+# Innodb writes changed data record into lt’s log buffer, which kept in memory
+# and it saves disk I/O for large transactions as it not need to write the log
+# of changes to disk before transaction commit.
+# 4 MB – 8 MB is good start unless you write a lot of huge blobs.
+innodb_log_buffer_size = <%= @innodb_log_buffer_size %>
+
+# Useful in highly concurrent workload as it may reduce contention of the global mutexes.
+innodb_buffer_pool_instances = <%= @innodb_buffer_pool_instances %>
+
+# With improvements to the InnoDB engine, it is recommended to allow the engine to control
+# the concurrency by keeping it to default value (which is zero).
+# If you see concurrency issues, you can tune this variable.
+# A recommended value is 2 times the number of CPUs plus the number of disks.
+# It’s dynamic variable means it can set without restarting MySQL server.
+innodb_thread_concurrency = <%= @innodb_thread_concurrency %>
+
 
 # Performance tuning
 
-log-queries-not-using-indexes   = 1
-log_slow_queries    = /var/log/mysql/mysql-slow.log
-query_cache_limit   = 2M
-query_cache_size    = 32M
+log-queries-not-using-indexes = <%= @log_queries_not_using_indexes %>
+log_slow_queries    = <%= @log_slow_queries %>
+query_cache_limit   = <%= @query_cache_limit %>
+query_cache_size    = <%= @query_cache_size %>
 
-table_cache         = 256
-sort_buffer_size    = 4M
-read_buffer_size    = 1M
-join_buffer_size    = 1M
+table_cache         = <%= @table_cache %>
+sort_buffer_size    = <%= @sort_buffer_size %>
+read_buffer_size    = <%= @read_buffer_size %>
+join_buffer_size    = <%= @join_buffer_size %>
 
-key_buffer          = 32M
-max_allowed_packet  = 128M
+key_buffer          = <%= @key_buffer %>
+max_allowed_packet  = <%= @max_allowed_packet %>
 
-thread_stack        = 384K
-thread_cache_size   = 16
+thread_stack        = <%= @thread_stack %>
+thread_cache_size   = <%= @thread_cache_size %>
