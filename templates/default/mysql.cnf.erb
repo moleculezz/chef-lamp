@@ -2,6 +2,9 @@
 
 # InnoDB settings
 
+#  This is usually recommended as it avoids having a huge shared tablespace
+# and as it allows you to reclaim space when you drop or truncate a table.
+# Separate tablespace also benefits for Xtrabackup partial backup scheme.
 innodb_file_per_table
 innodb_buffer_pool_size     = 2G
 innodb_log_file_size        = 512M # 25% of buffer pool size
