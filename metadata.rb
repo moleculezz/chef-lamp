@@ -17,5 +17,4 @@ depends "php"
 depends "composer"
 depends "mysql"
 depends "openssl"
-
 depends "git"
