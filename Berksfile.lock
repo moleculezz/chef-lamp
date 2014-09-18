@@ -3,7 +3,7 @@ DEPENDENCIES
   apt
   base
     git: https://github.com/moleculezz/chef-base.git
-    revision: b0b0f24047dd65706195316fe6afa877c10143f8
+    revision: 11050f2630c2036f8ad94cb2caa90ad76a118f97
   build-essential
   composer
   database
@@ -27,7 +27,7 @@ GRAPH
     pacman (>= 0.0.0)
   apt (2.6.0)
   aws (2.4.0)
-  base (1.1.1)
+  base (1.1.2)
     ack (>= 0.0.0)
     apt (>= 0.0.0)
     chef-client (>= 0.0.0)
@@ -68,7 +68,7 @@ GRAPH
   iis (2.1.5)
     windows (>= 1.2.6)
   iptables (0.14.0)
-  lamp (0.3.2)
+  lamp (0.3.3)
     apache2 (>= 0.0.0)
     base (>= 0.0.0)
     composer (>= 0.0.0)
@@ -112,7 +112,7 @@ GRAPH
   secure (1.0.0)
     fail2ban (>= 0.0.0)
     openssh (>= 0.0.0)
-  sudo (2.7.0)
+  sudo (2.7.1)
   users (1.7.0)
   windows (1.34.2)
     chef_handler (>= 0.0.0)
