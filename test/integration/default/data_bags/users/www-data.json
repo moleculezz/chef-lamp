@@ -1,0 +1,7 @@
+{
+  "id": "www-data",
+  "groups": ["www-data"],
+  "shell": "/bin/bash",
+  "home": "/var/www",
+  "password": "$1$C.wh1o8V$QkcP018EuiluupiRclQde0"
+}

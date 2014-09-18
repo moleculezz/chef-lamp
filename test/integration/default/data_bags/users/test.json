@@ -1,0 +1,9 @@
+{
+  "id": "test",
+  "groups": ["sudo"],
+  "ssh_keys": [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSaq6nnqECjqwlvHIqjiJ+/21N0OV1fR6RZkSVOlZn2tSwYzZcYKiPCi0MVpe9HkIhtP1vz2Tls1ZTWtxbKDyapKmIiDgv990vAUqIt9ZfVVw9L84af9ab717vLFHM4GCDjxhJGaowtq41qGLeqHAfq0RDlG6gqwepX5Uq3k5cGbxrF5X9somSu89xut0PkWIEix3Q171PX1pdBwSZ8GL+8HZ6AM2hcPhCrMsimOd9/V3z5ftjKtgkll1/P4wxmLkBQ78vPydQDIxcYbtiZScWFUZJDyxD7gY+PyOkGuYfujXJT26hjq4TZHCOuBxTE1DnWNrMSn2EyMt2IJrGzOVn galo@jpresult.nl"
+  ],
+  "shell": "/bin/bash",
+  "password": "$1$C.wh1o8V$QkcP018EuiluupiRclQde0"
+}
