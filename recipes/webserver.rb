@@ -28,7 +28,6 @@ users_manage node.apache.user do
 end
 
 web_app node.lamp.appname do
-  cookbook "apache2"
   server_name node.lamp.site_url
   server_aliases node.lamp.site_aliases
   allow_override "All"
