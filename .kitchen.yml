@@ -16,6 +16,9 @@ suites:
     data_bags_path: "test/integration/default/data_bags"
     run_list:
       - recipe[lamp::default]
+      - recipe[lamp::webserver]
+      - recipe[lamp::php]
+      - recipe[lamp::database]
     attributes: {
       authorization: { sudo: { users: ["vagrant"]}}
     }
