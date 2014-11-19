@@ -38,7 +38,7 @@
   <%- if node['apache']['version'] == '2.4' -%>
   LogLevel info rewrite:trace1
   <%- else -%>
-  LogLevel info
+  LogLevel notice
   RewriteLog <%= node['apache']['log_dir'] %>/<%= @application_name %>-rewrite.log
   RewriteLogLevel 0
   <%- end -%>
